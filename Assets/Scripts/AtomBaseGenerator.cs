@@ -34,14 +34,7 @@ public class AtomBaseGenerator : MonoBehaviour
 
     private void Update()
     {
-        i += 0.01f;
-
-        if (i > 5 && !tempDone)
-        {
-            TryGenerateAtom();
-            tempDone = true;
-        }
-        if (lazer != null && tempDone)
+        if (lazer != null)
         {
             // increase lazer size linearly
             lazer.transform.localScale += new Vector3(0.01f, 0f, 0.01f);
@@ -61,6 +54,33 @@ public class AtomBaseGenerator : MonoBehaviour
                 }
             }
         }
+        //i += 0.01f;
+
+        //if (i > 5 && !tempDone)
+        //{
+        //    TryGenerateAtom();
+        //    tempDone = true;
+        //}
+        //if (lazer != null && tempDone)
+        //{
+        //    // increase lazer size linearly
+        //    lazer.transform.localScale += new Vector3(0.01f, 0f, 0.01f);
+
+        //    // when local scale reaches 4, destroy lazer
+        //    if (lazer.transform.localScale.x >= 3)
+        //    {
+        //        Destroy(lazer);
+        //        string key = $"p:{CheckInside.Protons}|n:{CheckInside.Neutrons}|e:{CheckInside.Electrons}";
+        //        if (elements.ContainsKey(key))
+        //        {
+        //            GenerateAtomBase();
+        //        }
+        //        else
+        //        {
+        //            Debug.Log("No such element");
+        //        }
+        //    }
+        //}
     }
 
     public void TryGenerateAtom()

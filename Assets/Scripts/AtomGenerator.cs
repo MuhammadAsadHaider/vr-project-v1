@@ -1,33 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class AtomGenerator : MonoBehaviour
 {
-    public GameObject proton;
-    public int protonCount = 2;
+    public GameObject Proton;
     
-    public GameObject neutron;
-    public int neutronCount = 2;
+    public GameObject Neutron;
 
-    public GameObject electron;
-    public int electronCount = 2;
-    
-    void Start()
+    public GameObject Electron;
+
+    // function to generate particle
+    public void ParticleGeneratorInit(int protonCount, int neutronCount, int electronCount)
     {
-        ParticleGenerator(proton, protonCount, 0.3f);
-        ParticleGenerator(neutron, neutronCount, 0.3f);
-        ParticleGenerator(electron, electronCount, 0.1f, 0.4f);
+        ParticleGenerator(Proton, protonCount, 0.3f);
+        ParticleGenerator(Neutron, neutronCount, 0.3f);
+        ParticleGenerator(Electron, electronCount, 0.1f, 0.4f);
     }
-    
+
     private void ParticleGenerator(GameObject particle, int count, float scale, float radius = 0.2f)
     {
         for (int i = 0; i < count; i++)
         {
             GameObject newParent = null;
-            if (particle == electron)
+            if (particle == Electron)
             {
                 var parent = new GameObject("nucleus");
                 parent.transform.localPosition = Vector3.zero;
@@ -47,7 +41,7 @@ public class AtomGenerator : MonoBehaviour
             Destroy(obj.GetComponent<RandomMotion>());
 
             // add orbit script to particle
-            if (particle == electron)
+            if (particle == Electron)
             {
                 var orbit = obj.AddComponent<Orbit>();
                 orbit.a = Random.Range(0.5f, 1.5f);

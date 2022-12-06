@@ -831,6 +831,10 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1490529474, guid: e927ab9e067b3fe4f871601e335242d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1490529477, guid: e927ab9e067b3fe4f871601e335242d3, type: 3}
       propertyPath: count
       value: 10
@@ -4276,6 +4280,10 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1490529474, guid: e927ab9e067b3fe4f871601e335242d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1490529477, guid: e927ab9e067b3fe4f871601e335242d3, type: 3}
       propertyPath: count
       value: 10
@@ -4335,6 +4343,10 @@ PrefabInstance:
     - target: {fileID: 2307354247774421168, guid: e927ab9e067b3fe4f871601e335242d3, type: 3}
       propertyPath: m_Name
       value: floor_5_electron
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307354247780885374, guid: e927ab9e067b3fe4f871601e335242d3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2330267676699133666, guid: e927ab9e067b3fe4f871601e335242d3, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7090,7 +7102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458055963319323166, guid: c8a6ed9c22865344a9ca247d1a8aaa72, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.981
+      value: -6.817
       objectReference: {fileID: 0}
     - target: {fileID: 8458055963319323166, guid: c8a6ed9c22865344a9ca247d1a8aaa72, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7124,7 +7136,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: electron
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7774002925359543503, guid: c8a6ed9c22865344a9ca247d1a8aaa72, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c8a6ed9c22865344a9ca247d1a8aaa72, type: 3}
 --- !u!1001 &854605602
 PrefabInstance:
@@ -8625,7 +8638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458055963319323166, guid: 23215fdbe874afe4ba55c1f4ec8b2d97, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.902
+      value: -4.258
       objectReference: {fileID: 0}
     - target: {fileID: 8458055963319323166, guid: 23215fdbe874afe4ba55c1f4ec8b2d97, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16991,6 +17004,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1345981414}
     m_Modifications:
+    - target: {fileID: 1490529474, guid: e927ab9e067b3fe4f871601e335242d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1490529477, guid: e927ab9e067b3fe4f871601e335242d3, type: 3}
       propertyPath: count
       value: 10
@@ -17046,6 +17063,10 @@ PrefabInstance:
     - target: {fileID: 2307354247774421168, guid: e927ab9e067b3fe4f871601e335242d3, type: 3}
       propertyPath: m_Name
       value: floor_5_proton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307354247780885374, guid: e927ab9e067b3fe4f871601e335242d3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e927ab9e067b3fe4f871601e335242d3, type: 3}

@@ -1,7 +1,3 @@
-using CsvHelper;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -16,9 +12,8 @@ public class AtomGhostGenerator : MonoBehaviour
     {
         var element = AtomBaseGenerator.Elements[symbol];
 
-        Debug.Log($"Element: {element.ElementName}");
         // initiate atome base to be inside parent
-        var obj = Instantiate(AtomBase, transform.position + new Vector3(0, 2f, 0f), Quaternion.identity);
+        var obj = Instantiate(AtomBase, transform.position + new Vector3(0, 1.5f, 0f), Quaternion.identity);
 
         // add atom to parent
         obj.transform.parent = transform;
@@ -27,6 +22,6 @@ public class AtomGhostGenerator : MonoBehaviour
 
         // add component to atombase
         var generator = obj.GetComponent<AtomGenerator>();
-        generator.ParticleGeneratorInit(element.Protons, element.Neutrons, element.Electrons, 0.2f);
+        generator.ParticleGeneratorInit(element.Protons, element.Neutrons, element.Electrons, 0.25f);
     }
 }

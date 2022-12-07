@@ -67,16 +67,16 @@ public class CheckInside : MonoBehaviour
             Protons = protons;
             Neutrons = neutrons;
             Electrons = electrons;
+
+            if (destroyObjects)
+            {
+                destroyObjects = false;
+            }
         }
     }
 
     public void DestroyObjects(bool destroy)
     {
         destroyObjects = true;
-    }
-
-    public void ReadyForNewObjects()
-    {
-        destroyObjects = false;
     }
 }

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-
 public class AtomGenerator : MonoBehaviour
 {
     public GameObject Proton;
@@ -47,8 +46,8 @@ public class AtomGenerator : MonoBehaviour
             if (particle == Electron)
             {
                 var orbit = obj.AddComponent<Orbit>();
-                orbit.a = Random.Range(0.5f, 1.5f);
-                orbit.b = Random.Range(0.5f, 1.5f);
+                orbit.a = Random.Range(0.5f * scale, 1.5f * scale);
+                orbit.b = Random.Range(0.5f * scale, 1.5f * scale);
                 orbit.speed = Random.Range(0.5f, 1.5f);
                 orbit.angleOffset = Random.Range(0f, 360f);
             }

@@ -11,10 +11,7 @@ public class AtomBaseGenerator : MonoBehaviour
     public GameObject Lazer;
 
     private GameObject lazer;
-    
-    private float i = 0;
-
-    private bool tempDone = false;
+    private bool lazerWorking = false;
 
     private HashSet<string> validElements;
     public Dictionary<string, Element> Elements = new Dictionary<string, Element>();
@@ -28,7 +25,7 @@ public class AtomBaseGenerator : MonoBehaviour
         foreach (var record in records)
         {
             validElements.Add($"p:{record.Protons}|n:{record.Neutrons}|e:{record.Electrons}");
-            Elements.Add(record.Symbol.ToLower(), record);
+            Elements.Add(record.Symbol.Trim().ToLower(), record);
         }
     }
 
@@ -48,46 +45,24 @@ public class AtomBaseGenerator : MonoBehaviour
                 {
                     CheckInside.DestroyObjects(true);
                     GenerateAtomBase();
-                    CheckInside.ReadyForNewObjects();
+                    lazerWorking = false;
                 }
                 else
                 {
                     Debug.Log("No such element");
+                    lazerWorking = false;
                 }
             }
         }
-        //i += 0.01f;
-
-        //if (i > 5 && !tempDone)
-        //{
-        //    TryGenerateAtom();
-        //    tempDone = true;
-        //}
-        //if (lazer != null && tempDone)
-        //{
-        //    // increase lazer size linearly
-        //    lazer.transform.localScale += new Vector3(0.01f, 0f, 0.01f);
-
-        //    // when local scale reaches 4, destroy lazer
-        //    if (lazer.transform.localScale.x >= 3)
-        //    {
-        //        Destroy(lazer);
-        //        string key = $"p:{CheckInside.Protons}|n:{CheckInside.Neutrons}|e:{CheckInside.Electrons}";
-        //        if (elements.ContainsKey(key))
-        //        {
-        //            GenerateAtomBase();
-        //        }
-        //        else
-        //        {
-        //            Debug.Log("No such element");
-        //        }
-        //    }
-        //}
     }
 
     public void TryGenerateAtom()
     {
-        lazer = Instantiate(Lazer, transform.position + new Vector3(0, -8f, 0f), Quaternion.identity);
+        if (!lazerWorking)
+        {
+            lazer = Instantiate(Lazer, transform.position + new Vector3(0, -8f, 0f), Quaternion.identity);
+            lazerWorking = true;
+        }
     }
     
     // function to generate atom base
@@ -125,18 +100,18 @@ public class AtomBaseGenerator : MonoBehaviour
         public int AtomicNumber { get; set; }
 
         [CsvHelper.Configuration.Attributes.Index(6)]
-        public float? AtomicMass { get; set; }
+        public float AtomicMass { get; set; }
 
         [CsvHelper.Configuration.Attributes.Index(7)]
-        public string? StateAtRoomTemp { get; set; }
+        public string StateAtRoomTemp { get; set; }
 
         [CsvHelper.Configuration.Attributes.Index(8)]
-        public string? MeltingPoint { get; set; }
+        public string MeltingPoint { get; set; }
 
         [CsvHelper.Configuration.Attributes.Index(9)]
-        public string? BoilingPoint { get; set; }
+        public string BoilingPoint { get; set; }
 
         [CsvHelper.Configuration.Attributes.Index(10)]
-        public string? Density { get; set; }
+        public string Density { get; set; }
     }
 }

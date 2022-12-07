@@ -9,6 +9,8 @@ public class CheckInside : MonoBehaviour
 
     private List<string> unWanted = new List<string>() { "Cube", "Cylinder" };
 
+    private bool destroyObjects = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -18,25 +20,46 @@ public class CheckInside : MonoBehaviour
         int electrons = 0;
         if (hitColliders.Length > 0)
         {
-            foreach (Collider collider in hitColliders)
+            for (int i = 0; i < hitColliders.Length; i++)
             {
-                if (unWanted.Contains(collider.gameObject.name))
+                if (unWanted.Contains(hitColliders[i].gameObject.name))
                 {
                     continue;
                 }
-                switch (collider.gameObject.name)
+                switch (hitColliders[i].gameObject.name)
                 {
                     case "proton":
                     case "proton(Clone)":
-                        protons += 1;
+                        if (destroyObjects)
+                        {
+                            Destroy(hitColliders[i].gameObject);
+                        }
+                        else
+                        {
+                            protons += 1;
+                        }
                         break;
                     case "neutron":
                     case "neutron(Clone)":
-                        neutrons += 1;
+                        if (destroyObjects)
+                        {
+                            Destroy(hitColliders[i].gameObject);
+                        }
+                        else
+                        {
+                            neutrons += 1;
+                        }
                         break;
                     case "electron":
                     case "electron(Clone)":
-                        electrons += 1;
+                        if (destroyObjects)
+                        {
+                            Destroy(hitColliders[i].gameObject);
+                        }
+                        else
+                        {
+                            electrons += 1;
+                        }
                         break;
                 }
             }
@@ -45,5 +68,10 @@ public class CheckInside : MonoBehaviour
             Neutrons = neutrons;
             Electrons = electrons;
         }
+    }
+
+    public void DestroyObjects(bool destroy)
+    {
+        destroyObjects = true;
     }
 }

@@ -46,6 +46,7 @@ public class AtomBaseGenerator : MonoBehaviour
                 string key = $"p:{CheckInside.Protons}|n:{CheckInside.Neutrons}|e:{CheckInside.Electrons}";
                 if (elements.ContainsKey(key))
                 {
+                    CheckInside.DestroyObjects(true);
                     GenerateAtomBase();
                 }
                 else

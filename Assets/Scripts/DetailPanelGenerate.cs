@@ -4,9 +4,9 @@ public class DetailPanelGenerate : MonoBehaviour
 {
     public GameObject Details;
 
-    public void GenerateDetails()
+    public void GenerateDetails(string test)
     {
-        GameObject detail = Instantiate(Details, transform.position + new Vector3(1.4f, 0, -4f), Quaternion.identity);
+        GameObject detail = Instantiate(Details, transform);
         detail.transform.SetParent(transform);
     }
 }

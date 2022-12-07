@@ -16,19 +16,19 @@ public class AtomBaseGenerator : MonoBehaviour
 
     private bool tempDone = false;
 
-    private Dictionary<string, Element> elements;
+    private HashSet<string> validElements;
+    public Dictionary<string, Element> Elements = new Dictionary<string, Element>();
 
     private void Start()
     {
-        using (var reader = new StreamReader("Assets/elements.csv"))
-        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+        var reader = new StreamReader("Assets/elements.csv");
+        var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+        var records = csv.GetRecords<Element>();
+        validElements = new HashSet<string>();
+        foreach (var record in records)
         {
-            var records = csv.GetRecords<Element>();
-            elements = new Dictionary<string, Element>();
-            foreach (var record in records)
-            {
-                elements.Add($"p:{record.Protons}|n:{record.Neutrons}|e:{record.Electrons}", record);
-            }
+            validElements.Add($"p:{record.Protons}|n:{record.Neutrons}|e:{record.Electrons}");
+            Elements.Add(record.Symbol.ToLower(), record);
         }
     }
 
@@ -44,10 +44,11 @@ public class AtomBaseGenerator : MonoBehaviour
             {
                 Destroy(lazer);
                 string key = $"p:{CheckInside.Protons}|n:{CheckInside.Neutrons}|e:{CheckInside.Electrons}";
-                if (elements.ContainsKey(key))
+                if (validElements.Contains(key))
                 {
                     CheckInside.DestroyObjects(true);
                     GenerateAtomBase();
+                    CheckInside.ReadyForNewObjects();
                 }
                 else
                 {
@@ -103,7 +104,7 @@ public class AtomBaseGenerator : MonoBehaviour
         generator.ParticleGeneratorInit(CheckInside.Protons, CheckInside.Neutrons, CheckInside.Electrons);
     }
 
-    private class Element
+    public class Element
     {        
         [CsvHelper.Configuration.Attributes.Index(0)]
         public string ElementName { get; set; }

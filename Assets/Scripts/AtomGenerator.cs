@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+
 
 public class AtomGenerator : MonoBehaviour
 {
@@ -9,14 +11,14 @@ public class AtomGenerator : MonoBehaviour
     public GameObject Electron;
 
     // function to generate particle
-    public void ParticleGeneratorInit(int protonCount, int neutronCount, int electronCount)
+    public void ParticleGeneratorInit(int protonCount, int neutronCount, int electronCount, float scale = 1)
     {
-        ParticleGenerator(Proton, protonCount, 0.3f);
-        ParticleGenerator(Neutron, neutronCount, 0.3f);
-        ParticleGenerator(Electron, electronCount, 0.1f, 0.4f);
+        ParticleGenerator(Proton, protonCount, 0.3f * scale, 0.2f * scale);
+        ParticleGenerator(Neutron, neutronCount, 0.3f * scale, 0.2f * scale);
+        ParticleGenerator(Electron, electronCount, 0.1f * scale, 0.4f * scale);
     }
 
-    private void ParticleGenerator(GameObject particle, int count, float scale, float radius = 0.2f)
+    private void ParticleGenerator(GameObject particle, int count, float scale, float radius)
     {
         for (int i = 0; i < count; i++)
         {
@@ -39,6 +41,7 @@ public class AtomGenerator : MonoBehaviour
             // increase size of particle
             obj.transform.localScale = new Vector3(scale, scale, scale);
             Destroy(obj.GetComponent<RandomMotion>());
+            Destroy(obj.GetComponent<XRGrabInteractable>());
 
             // add orbit script to particle
             if (particle == Electron)

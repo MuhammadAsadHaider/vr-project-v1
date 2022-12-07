@@ -74,4 +74,9 @@ public class CheckInside : MonoBehaviour
     {
         destroyObjects = true;
     }
+
+    public void ReadyForNewObjects()
+    {
+        destroyObjects = false;
+    }
 }

@@ -10,7 +10,6 @@ public class CheckPosition : MonoBehaviour
     void Start()
     {
         audioSource = AI.GetComponent<AudioSource>();
-        audioSource.clip = Resources.Load<AudioClip>($"instructions");
     }
 
     // Update is called once per frame
@@ -19,6 +18,7 @@ public class CheckPosition : MonoBehaviour
         // check if object is in main camera view
         if (!played && transform.position.x > 4 && transform.position.z > -3 && transform.position.z < 3)
         {
+            audioSource.clip = Resources.Load<AudioClip>($"instructions");
             audioSource.Play();
             played = true;
         }

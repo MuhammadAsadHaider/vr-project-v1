@@ -125,7 +125,7 @@ public class AtomBaseGenerator : MonoBehaviour
     private void GenerateAtomBase()
     {
         // initiate atome base to be inside parent
-        var obj = Instantiate(AtomBase, transform.position + new Vector3(0, -4f, 0f), Quaternion.identity);
+        var obj = Instantiate(AtomBase, transform.position + new Vector3(0, -6f, 0f), Quaternion.identity);
 
         // add atom to parent
         obj.transform.parent = transform;

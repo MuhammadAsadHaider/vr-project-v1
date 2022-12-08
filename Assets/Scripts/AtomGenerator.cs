@@ -46,8 +46,8 @@ public class AtomGenerator : MonoBehaviour
             if (particle == Electron)
             {
                 var orbit = obj.AddComponent<Orbit>();
-                orbit.a = Random.Range(0.5f * scale, 1.5f * scale);
-                orbit.b = Random.Range(0.5f * scale, 1.5f * scale);
+                orbit.a = Random.Range(0.5f, 1.5f);
+                orbit.b = Random.Range(0.5f, 1.5f);
                 orbit.speed = Random.Range(0.5f, 1.5f);
                 orbit.angleOffset = Random.Range(0f, 360f);
             }

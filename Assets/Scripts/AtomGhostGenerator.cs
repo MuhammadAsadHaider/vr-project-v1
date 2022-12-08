@@ -12,6 +12,13 @@ public class AtomGhostGenerator : MonoBehaviour
     {
         var element = AtomBaseGenerator.Elements[symbol];
 
+        // check if atom base already exists as a child
+        if (transform.childCount > 0)
+        {
+            // destroy the atom base
+            Destroy(transform.GetChild(0).gameObject);
+        }
+
         // initiate atome base to be inside parent
         var obj = Instantiate(AtomBase, transform.position + new Vector3(0, 1.5f, 0f), Quaternion.identity);
 

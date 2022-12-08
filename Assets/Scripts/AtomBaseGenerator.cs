@@ -67,6 +67,7 @@ public class AtomBaseGenerator : MonoBehaviour
             {
                 alarmLight.intensity = alarmLight.intensity == 0.0f ? 1.0f : 0.0f;
                 alarmLightFlashes--;
+                
             }
         }
         else

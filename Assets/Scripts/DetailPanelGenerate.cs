@@ -3,7 +3,17 @@ using UnityEngine;
 public class DetailPanelGenerate : MonoBehaviour
 {
     public GameObject Details;
+    public GameObject AI;
+    
     public AtomBaseGenerator AtomBaseGenerator;
+
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        // get audio source
+        audioSource = AI.GetComponent<AudioSource>();
+    }
 
     public void GenerateDetails(string symbol)
     {
@@ -12,8 +22,17 @@ public class DetailPanelGenerate : MonoBehaviour
             Debug.Log($"{symbol} not found");
             return;
         }
-        
+
+        audioSource.clip = Resources.Load<AudioClip>($"Elements/{symbol.Trim()}");
+        audioSource.Play();
         var element = AtomBaseGenerator.Elements[symbol.Trim()];
+
+        // check if child named Detail clone exists
+        if (transform.Find("Details(Clone)") != null)
+        {
+            // destroy the atom base
+            Destroy(transform.Find("Details(Clone)").gameObject);
+        }
 
         GameObject detail = Instantiate(Details, transform);
         detail.transform.SetParent(transform);

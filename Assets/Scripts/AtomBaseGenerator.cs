@@ -9,11 +9,16 @@ public class AtomBaseGenerator : MonoBehaviour
     public GameObject AtomBase;
     public CheckInside CheckInside;
     public GameObject Lazer;
+    public GameObject AI;
 
     private GameObject lazer;
     private bool lazerWorking = false;
 
     private HashSet<string> validElements;
+    private Light alarmLight;
+    private AudioSource audioSource;
+    private AudioSource audioSourceAI;
+
     public Dictionary<string, Element> Elements = new Dictionary<string, Element>();
 
     private void Start()
@@ -27,10 +32,35 @@ public class AtomBaseGenerator : MonoBehaviour
             validElements.Add($"p:{record.Protons}|n:{record.Neutrons}|e:{record.Electrons}");
             Elements.Add(record.Symbol.Trim().ToLower(), record);
         }
+
+        // get child point light object
+        var pointLight = transform.GetChild(1).gameObject;
+
+        alarmLight = pointLight.GetComponent<Light>();
+
+        // get audio source component
+        audioSource = GetComponent<AudioSource>();
+        audioSourceAI = AI.GetComponent<AudioSource>();
     }
+
+    private int alarmLightFlashes = 0;
 
     private void Update()
     {
+        if (alarmLightFlashes > 0)
+        {
+            if (Time.frameCount % 25 == 0)
+            {
+                alarmLight.intensity = alarmLight.intensity == 0.0f ? 1.0f : 0.0f;
+                alarmLightFlashes--;
+            }
+        }
+        else
+        {
+            audioSource.Stop();
+            alarmLight.intensity = 0.0f;
+        }
+
         if (lazer != null)
         {
             // increase lazer size linearly
@@ -46,9 +76,17 @@ public class AtomBaseGenerator : MonoBehaviour
                     CheckInside.DestroyObjects(true);
                     GenerateAtomBase();
                     lazerWorking = false;
+                    alarmLightFlashes = 6;
+                    alarmLight.color = Color.green;
+                    
+                    
                 }
                 else
                 {
+                    alarmLightFlashes = 6;
+                    alarmLight.color = Color.red;
+                    audioSource.clip = Resources.Load<AudioClip>("alarm");
+                    audioSource.Play();
                     Debug.Log("No such element");
                     lazerWorking = false;
                 }

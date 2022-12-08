@@ -18920,6 +18920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a745b80458c7c3468f40fefb19b80d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AI: {fileID: 1461981694}
 --- !u!4 &2062273150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 452560, guid: 7e2e8028213a4834fa8f2991bdefe708, type: 3}

@@ -3625,6 +3625,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1461981694}
     - target: {fileID: 3846205536562297956, guid: fa9417a37ab7e37498deea197f1769a3, type: 3}
+      propertyPath: Table
+      value: 
+      objectReference: {fileID: 1080083558}
+    - target: {fileID: 3846205536562297956, guid: fa9417a37ab7e37498deea197f1769a3, type: 3}
       propertyPath: AtomBaseGenerator
       value: 
       objectReference: {fileID: 2049587182}

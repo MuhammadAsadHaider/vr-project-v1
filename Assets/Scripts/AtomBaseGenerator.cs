@@ -87,6 +87,8 @@ public class AtomBaseGenerator : MonoBehaviour
                     alarmLight.color = Color.red;
                     audioSource.clip = Resources.Load<AudioClip>("alarm");
                     audioSource.Play();
+                    audioSourceAI.clip = Resources.Load<AudioClip>("FailureMessage");
+                    audioSourceAI.Play();
                     Debug.Log("No such element");
                     lazerWorking = false;
                 }

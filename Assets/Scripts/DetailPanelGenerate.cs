@@ -7,7 +7,13 @@ public class DetailPanelGenerate : MonoBehaviour
 
     public void GenerateDetails(string symbol)
     {
-        var element = AtomBaseGenerator.Elements[symbol];
+        if (!AtomBaseGenerator.Elements.ContainsKey(symbol.Trim()))
+        {
+            Debug.Log($"{symbol} not found");
+            return;
+        }
+        
+        var element = AtomBaseGenerator.Elements[symbol.Trim()];
 
         GameObject detail = Instantiate(Details, transform);
         detail.transform.SetParent(transform);

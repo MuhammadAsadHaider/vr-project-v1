@@ -19,6 +19,9 @@ public class DetailPanelGenerate : MonoBehaviour
         {
             switch (textBox.name)
             {
+                case "Name":
+                    textBox.text = element.ElementName.ToString();
+                    break;
                 case "AtomicNumberValue":
                     textBox.text = element.AtomicNumber.ToString();
                     break;

@@ -23,8 +23,8 @@ public class AtomBaseGenerator : MonoBehaviour
 
     private void Start()
     {
-        var reader = new StreamReader("Assets/elements.csv");
-        var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+        using var reader = new StreamReader("Assets/elements.csv");
+        using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
         var records = csv.GetRecords<Element>();
         validElements = new HashSet<string>();
         foreach (var record in records)
@@ -76,14 +76,14 @@ public class AtomBaseGenerator : MonoBehaviour
                     CheckInside.DestroyObjects(true);
                     GenerateAtomBase();
                     lazerWorking = false;
-                    alarmLightFlashes = 6;
+                    alarmLightFlashes = 10;
                     alarmLight.color = Color.green;
                     
                     
                 }
                 else
                 {
-                    alarmLightFlashes = 6;
+                    alarmLightFlashes = 10;
                     alarmLight.color = Color.red;
                     audioSource.clip = Resources.Load<AudioClip>("alarm");
                     audioSource.Play();

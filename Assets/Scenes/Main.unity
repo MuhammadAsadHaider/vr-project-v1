@@ -272,8 +272,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 196629709}
-        m_TargetAssemblyTypeName: GameStart, Assembly-CSharp
+      - m_Target: {fileID: 1476647518}
+        m_TargetAssemblyTypeName: PanelSelector, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -2517,8 +2517,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 196629709}
-        m_TargetAssemblyTypeName: GameStart, Assembly-CSharp
+      - m_Target: {fileID: 1476647518}
+        m_TargetAssemblyTypeName: PanelSelector, Assembly-CSharp
         m_MethodName: PlayInstructions
         m_Mode: 1
         m_Arguments:
@@ -14677,8 +14677,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 196629709}
-        m_TargetAssemblyTypeName: GameStart, Assembly-CSharp
+      - m_Target: {fileID: 1476647518}
+        m_TargetAssemblyTypeName: PanelSelector, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:

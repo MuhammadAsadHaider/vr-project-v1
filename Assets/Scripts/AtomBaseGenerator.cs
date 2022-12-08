@@ -14,10 +14,13 @@ public class AtomBaseGenerator : MonoBehaviour
     private GameObject lazer;
     private bool lazerWorking = false;
 
-    private HashSet<string> validElements;
+    private Dictionary<string, string> validElements = new Dictionary<string, string>();
     private Light alarmLight;
     private AudioSource audioSource;
     private AudioSource audioSourceAI;
+    private string elementMade = null;
+    private bool elementSpoken = false;
+    private int alarmLightFlashes = 0;
 
     public Dictionary<string, Element> Elements = new Dictionary<string, Element>();
 
@@ -26,10 +29,9 @@ public class AtomBaseGenerator : MonoBehaviour
         using var reader = new StreamReader("Assets/elements.csv");
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
         var records = csv.GetRecords<Element>();
-        validElements = new HashSet<string>();
         foreach (var record in records)
         {
-            validElements.Add($"p:{record.Protons}|n:{record.Neutrons}|e:{record.Electrons}");
+            validElements.Add($"p:{record.Protons}|n:{record.Neutrons}|e:{record.Electrons}", record.Symbol.ToLower());
             Elements.Add(record.Symbol.Trim().ToLower(), record);
         }
 
@@ -43,10 +45,22 @@ public class AtomBaseGenerator : MonoBehaviour
         audioSourceAI = AI.GetComponent<AudioSource>();
     }
 
-    private int alarmLightFlashes = 0;
 
     private void Update()
     {
+        if (elementSpoken && !audioSourceAI.isPlaying)
+        {
+            elementSpoken = false;
+            elementMade = null;
+        }
+        
+        if (!audioSourceAI.isPlaying && elementMade != null)
+        {
+            audioSourceAI.clip = Resources.Load<AudioClip>($"Elements/{elementMade}");
+            audioSourceAI.Play();
+            elementSpoken = true;
+        }
+        
         if (alarmLightFlashes > 0)
         {
             if (Time.frameCount % 25 == 0)
@@ -71,15 +85,16 @@ public class AtomBaseGenerator : MonoBehaviour
             {
                 Destroy(lazer);
                 string key = $"p:{CheckInside.Protons}|n:{CheckInside.Neutrons}|e:{CheckInside.Electrons}";
-                if (validElements.Contains(key))
+                if (validElements.ContainsKey(key))
                 {
+                    elementMade = validElements[key];
                     CheckInside.DestroyObjects(true);
                     GenerateAtomBase();
                     lazerWorking = false;
                     alarmLightFlashes = 10;
                     alarmLight.color = Color.green;
-                    
-                    
+                    audioSourceAI.clip = Resources.Load<AudioClip>("SuccessMessage");
+                    audioSourceAI.Play();
                 }
                 else
                 {

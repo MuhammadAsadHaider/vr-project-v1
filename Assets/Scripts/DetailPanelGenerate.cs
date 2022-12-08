@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class DetailPanelGenerate : MonoBehaviour
 {
+    public GameObject Table;
+    
     public GameObject Details;
     public GameObject AI;
     
@@ -39,6 +41,15 @@ public class DetailPanelGenerate : MonoBehaviour
 
         // get all children text components
         var textsBoxes = detail.GetComponentsInChildren<TMPro.TextMeshProUGUI>();
+
+        // get all button children
+        var buttons = detail.GetComponentsInChildren<UnityEngine.UI.Button>();
+
+        // set button on click event
+        foreach (var button in buttons)
+        {
+            button.onClick.AddListener(() => { Table.GetComponent<DestroyChildren>().DestroyChildObjects(); });
+        }
 
         foreach (var textBox in textsBoxes)
         {

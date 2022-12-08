@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2478456547480195822}
   - component: {fileID: 2478456547480195821}
   - component: {fileID: 4997518569614893840}
+  - component: {fileID: 427870872465651730}
   m_Layer: 0
   m_Name: Atom
   m_TagString: Untagged
@@ -256,3 +257,15 @@ MonoBehaviour:
   Proton: {fileID: 8458055963319323167, guid: ada89446acd718b49a02ac7875fcdd72, type: 3}
   Neutron: {fileID: 8458055963319323167, guid: 23215fdbe874afe4ba55c1f4ec8b2d97, type: 3}
   Electron: {fileID: 8458055963319323167, guid: c8a6ed9c22865344a9ca247d1a8aaa72, type: 3}
+--- !u!114 &427870872465651730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478456547480195795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273a42425d2e54345aa054b511c4a5fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

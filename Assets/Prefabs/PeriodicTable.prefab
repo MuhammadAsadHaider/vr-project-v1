@@ -22230,6 +22230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Details: {fileID: 132523793727282197, guid: fc35b7afc188e5a4296809dabe45b3b2, type: 3}
+  AI: {fileID: 0}
+  AtomBaseGenerator: {fileID: 0}
 --- !u!1 &3949324015245292941
 GameObject:
   m_ObjectHideFlags: 0

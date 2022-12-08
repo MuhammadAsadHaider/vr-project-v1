@@ -14004,6 +14004,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55ed2ae2b3c9ec4db7b098120593ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProtonNewMaterial: {fileID: 2100000, guid: ec2158f6bf7f8784e9775ae57017e0bb, type: 2}
+  ElectronNewMaterial: {fileID: 2100000, guid: 0cef8862c22d69c4e990a29b3fee8c19, type: 2}
+  NeutronNewMaterial: {fileID: 2100000, guid: 67c6c705c91bfff47973b6802985721c, type: 2}
   Protons: 0
   Neutrons: 0
   Electrons: 0

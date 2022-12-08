@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 public class CheckInside : MonoBehaviour
 {
+    public Material ProtonNewMaterial;
+    public Material ElectronNewMaterial;
+    public Material NeutronNewMaterial;
+    
     public int Protons = 0;
     public int Neutrons = 0;
     public int Electrons = 0;
@@ -37,6 +41,8 @@ public class CheckInside : MonoBehaviour
                         else
                         {
                             protons += 1;
+                            // change material of object
+                            hitColliders[i].gameObject.GetComponent<Renderer>().material = ProtonNewMaterial;
                         }
                         break;
                     case "neutron":
@@ -48,6 +54,7 @@ public class CheckInside : MonoBehaviour
                         else
                         {
                             neutrons += 1;
+                            hitColliders[i].gameObject.GetComponent<Renderer>().material = NeutronNewMaterial;
                         }
                         break;
                     case "electron":
@@ -59,6 +66,7 @@ public class CheckInside : MonoBehaviour
                         else
                         {
                             electrons += 1;
+                            hitColliders[i].gameObject.GetComponent<Renderer>().material = ElectronNewMaterial;
                         }
                         break;
                 }

@@ -58,7 +58,7 @@ public class GameStart : MonoBehaviour
 
     public void StartGame()
     {
-        int randomNumber = UnityEngine.Random.Range(0, 30);
+        int randomNumber = UnityEngine.Random.Range(0, 50);
         var randomKey = AtomBaseGenerator.Elements.Keys.ToList()[randomNumber];
         var randomElement = AtomBaseGenerator.Elements[randomKey];
 

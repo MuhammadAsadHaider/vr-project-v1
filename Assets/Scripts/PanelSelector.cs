@@ -10,6 +10,9 @@ public class PanelSelector : MonoBehaviour
     private GameObject endScreen;
     private AudioSource audioSourceAI;
 
+    private bool gameStarted = false;
+    private bool gameInititated = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,15 @@ public class PanelSelector : MonoBehaviour
         audioSourceAI = AI.GetComponent<AudioSource>();
     }
 
+    void update()
+    {
+        if (gameStarted && !gameInititated)
+        {
+            gameScreen.GetComponent<GameStart>().StartGame();
+            gameInititated = true;
+        }
+    }
+
     public void PlayInstructions()
     {
         audioSourceAI.clip = Resources.Load<AudioClip>("ChallengeInstructions");
@@ -43,6 +55,9 @@ public class PanelSelector : MonoBehaviour
 
     public void Home()
     {
+        gameScreen.GetComponent<GameStart>().GameStarted = false;
+        gameStarted = false;
+
         endScreen.SetActive(false);
         startScreen.SetActive(true);
         gameScreen.SetActive(false);
@@ -54,13 +69,15 @@ public class PanelSelector : MonoBehaviour
         startScreen.SetActive(false);
         gameScreen.SetActive(true);
 
-        gameScreen.GetComponent<GameStart>().StartGame();
+        gameStarted = true;
     }
 
     public void EndGame(string message)
     {
+        gameScreen.GetComponent<GameStart>().GameStarted = false;
         gameScreen.SetActive(false);
         endScreen.SetActive(true);
+        gameStarted = false;
         var textBoxes = GetComponentsInChildren<TMPro.TextMeshProUGUI>();
         var textBox = textBoxes.Where(x => x.name == "SuccessOrFail").FirstOrDefault();
         textBox.text = message;

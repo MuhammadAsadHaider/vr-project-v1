@@ -10,7 +10,13 @@ public class AtomGhostGenerator : MonoBehaviour
     // function to generate atom base
     public void GenerateAtomBase(string symbol)
     {
-        var element = AtomBaseGenerator.Elements[symbol];
+        if (!AtomBaseGenerator.Elements.ContainsKey(symbol.Trim()))
+        {
+            Debug.Log($"{symbol} not found");
+            return;
+        }
+
+        var element = AtomBaseGenerator.Elements[symbol.Trim()];
 
         // check if atom base already exists as a child
         if (transform.childCount > 0)
@@ -20,7 +26,7 @@ public class AtomGhostGenerator : MonoBehaviour
         }
 
         // initiate atome base to be inside parent
-        var obj = Instantiate(AtomBase, transform.position + new Vector3(0, 1.5f, 0f), Quaternion.identity);
+        var obj = Instantiate(AtomBase, transform.position + new Vector3(0, 2f, 0f), Quaternion.identity);
 
         // add atom to parent
         obj.transform.parent = transform;
@@ -29,6 +35,6 @@ public class AtomGhostGenerator : MonoBehaviour
 
         // add component to atombase
         var generator = obj.GetComponent<AtomGenerator>();
-        generator.ParticleGeneratorInit(element.Protons, element.Neutrons, element.Electrons, 0.25f);
+        generator.ParticleGeneratorInit(element.Protons, element.Neutrons, element.Electrons, 0.5f);
     }
 }

@@ -1,16 +1,15 @@
 using UnityEngine;
 
-public class CheckInView : MonoBehaviour
+public class CheckPosition : MonoBehaviour
 {
     private bool viewed = false;
     // Update is called once per frame
     void Update()
     {
         // check if object is in main camera view
-        if (!viewed && GetComponent<Renderer>().isVisible)
+        if (transform.position.x > 4 && transform.position.z > -3 && transform.position.z < 3)
         {
-            Debug.Log("Object is in view");
-            viewed = true;
+            Debug.Log("Hello!");
         }
     }
 }

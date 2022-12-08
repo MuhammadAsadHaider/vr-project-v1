@@ -1699,7 +1699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7571063243545384488, guid: 62db2a0ad875b1d4dbd6338bc04a4c0d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7571063243987112120, guid: 62db2a0ad875b1d4dbd6338bc04a4c0d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13989,7 +13989,6 @@ GameObject:
   - component: {fileID: 1453008860}
   - component: {fileID: 1453008859}
   - component: {fileID: 1453008862}
-  - component: {fileID: 1453008863}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -14090,18 +14089,6 @@ MonoBehaviour:
   Protons: 0
   Neutrons: 0
   Electrons: 0
---- !u!114 &1453008863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1453008857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a745b80458c7c3468f40fefb19b80d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1456483875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18916,6 +18903,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &2062197716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7571063243987112123, guid: 62db2a0ad875b1d4dbd6338bc04a4c0d, type: 3}
+  m_PrefabInstance: {fileID: 192578229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2062197721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062197716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a745b80458c7c3468f40fefb19b80d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2062273150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 452560, guid: 7e2e8028213a4834fa8f2991bdefe708, type: 3}

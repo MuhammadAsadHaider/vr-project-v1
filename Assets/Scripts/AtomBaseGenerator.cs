@@ -10,6 +10,8 @@ public class AtomBaseGenerator : MonoBehaviour
     public CheckInside CheckInside;
     public GameObject Lazer;
     public GameObject AI;
+    public GameStart Game;
+    public GameObject Canvas;
 
     private GameObject lazer;
     private bool lazerWorking = false;
@@ -45,9 +47,8 @@ public class AtomBaseGenerator : MonoBehaviour
         audioSourceAI = AI.GetComponent<AudioSource>();
     }
 
-
     private void Update()
-    {
+    {        
         if (elementSpoken && !audioSourceAI.isPlaying)
         {
             elementSpoken = false;
@@ -86,7 +87,7 @@ public class AtomBaseGenerator : MonoBehaviour
             {
                 Destroy(lazer);
                 string key = $"p:{CheckInside.Protons}|n:{CheckInside.Neutrons}|e:{CheckInside.Electrons}";
-                if (validElements.ContainsKey(key))
+                if (validElements.ContainsKey(key) && ((!Game.GameStarted) || (Game.GameStarted && (validElements[key] == Game.TargetElement))))
                 {
                     elementMade = validElements[key];
                     CheckInside.DestroyObjects(true);
@@ -96,6 +97,10 @@ public class AtomBaseGenerator : MonoBehaviour
                     alarmLight.color = Color.green;
                     audioSourceAI.clip = Resources.Load<AudioClip>("SuccessMessage");
                     audioSourceAI.Play();
+                    if (Game.GameStarted)
+                    {
+                        Canvas.GetComponent<PanelSelector>().EndGame("Challenge Completed Successfully");
+                    }
                 }
                 else
                 {
@@ -105,7 +110,6 @@ public class AtomBaseGenerator : MonoBehaviour
                     audioSource.Play();
                     audioSourceAI.clip = Resources.Load<AudioClip>("FailureMessage");
                     audioSourceAI.Play();
-                    Debug.Log("No such element");
                     lazerWorking = false;
                 }
             }

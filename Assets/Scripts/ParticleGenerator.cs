@@ -18,4 +18,14 @@ public class ParticleGenerator : MonoBehaviour
             obj.transform.localRotation = Random.rotation;
         }
     }
+    
+    public void Generate(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            var obj = Instantiate(prefab, transform);
+            obj.transform.localPosition = Random.insideUnitSphere * scale;
+            obj.transform.localRotation = Random.rotation;
+        }
+    }
 }
